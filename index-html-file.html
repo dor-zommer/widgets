@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שעון אנלוגי קלאסי</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="clock-container">
+        <div class="analog-clock">
+            <div class="clock-face">
+                <!-- Hour markers -->
+                <div class="hour-markers">
+                    <div class="hour-marker"></div>
+                    <div class="hour-marker"></div>
+                    <div class="hour-marker"></div>
+                    <div class="hour-marker"></div>
+                </div>
+                
+                <!-- Numbers -->
+                <div class="number number-12">12</div>
+                <div class="number number-1">1</div>
+                <div class="number number-2">2</div>
+                <div class="number number-3">3</div>
+                <div class="number number-4">4</div>
+                <div class="number number-5">5</div>
+                <div class="number number-6">6</div>
+                <div class="number number-7">7</div>
+                <div class="number number-8">8</div>
+                <div class="number number-9">9</div>
+                <div class="number number-10">10</div>
+                <div class="number number-11">11</div>
+                
+                <!-- Clock hands -->
+                <div class="hand hour-hand" id="hourHand"></div>
+                <div class="hand minute-hand" id="minuteHand"></div>
+                <div class="hand second-hand" id="secondHand"></div>
+                
+                <!-- Center dot -->
+                <div class="clock-center"></div>
+            </div>
+        </div>
+        
+        <div class="digital-display" id="digitalTime">00:00:00</div>
+        <div class="date-info" id="dateInfo"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
