@@ -12,7 +12,7 @@
 
 ## 🚀 תצוגה
 
-[קישור לתצוגה חיה](https://[שם-המשתמש-שלך].github.io/analog-clock/)
+[קישור לתצוגה חיה](https://dor-zommer.github.io/widgets/)
 
 ## 📁 מבנה הפרויקט
 
