@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שעון אנלוגי קלאסי</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .clock-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .analog-clock {
+            width: 280px;
+            height: 280px;
+            position: relative;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 8px solid #333;
+        }
+
+        .clock-face {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .clock-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            background: #333;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        .number {
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            transform: translate(-50%, -50%);
+        }
+
+        .number-1 { top: 15%; left: 75%; }
+        .number-2 { top: 25%; left: 88%; }
+        .number-3 { top: 50%; left: 92%; }
+        .number-4 { top: 75%; left: 88%; }
+        .number-5 { top: 85%; left: 75%; }
+        .number-6 { top: 92%; left: 50%; }
+        .number-7 { top: 85%; left: 25%; }
+        .number-8 { top: 75%; left: 12%; }
+        .number-9 { top: 50%; left: 8%; }
+        .number-10 { top: 25%; left: 12%; }
+        .number-11 { top: 15%; left: 25%; }
+        .number-12 { top: 8%; left: 50%; }
+
+        .hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+            background: #333;
+        }
+
+        .hour-hand {
+            width: 4px;
+            height: 60px;
+            margin-left: -2px;
+            border-radius: 2px;
+            z-index: 3;
+        }
+
+        .minute-hand {
+            width: 3px;
+            height: 80px;
+            margin-left: -1.5px;
+            border-radius: 1.5px;
+            z-index: 2;
+        }
+
+        .second-hand {
+            width: 1px;
+            height: 90px;
+            margin-left: -0.5px;
+            background: #e74c3c;
+            z-index: 1;
+        }
+
+        .hour-markers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hour-marker {
+            position: absolute;
+            background: #666;
+            transform-origin: center bottom;
+        }
+
+        .hour-marker:nth-child(1) { width: 3px; height: 15px; top: 5px; left: calc(50% - 1.5px); }
+        .hour-marker:nth-child(2) { width: 3px; height: 15px; top: calc(50% - 7.5px); right: 5px; transform: rotate(90deg); }
+        .hour-marker:nth-child(3) { width: 3px; height: 15px; bottom: 5px; left: calc(50% - 1.5px); }
+        .hour-marker:nth-child(4) { width: 3px; height: 15px; top: calc(50% - 7.5px); left: 5px; transform: rotate(90deg); }
+
+        .digital-display {
+            background: rgba(51, 51, 51, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .date-info {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 480px) {
+            .analog-clock {
+                width: 240px;
+                height: 240px;
+                border: 6px solid #333;
+            }
+            
+            .number {
+                font-size: 20px;
+            }
+            
+            .hour-hand {
+                height: 50px;
+            }
+            
+            .minute-hand {
+                height: 70px;
+            }
+            
+            .second-hand {
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <div class="analog-clock">
+            <div class="clock-face">
+                <!-- Hour markers -->
+                <div class="hour-markers">
+                    <div class="hour-marker"></div>
+                    <div class="hour-marker"></div>
+                    <div class="hour-marker"></div>
+                    <div class="hour-marker"></div>
+                </div>
+                
+                <!-- Numbers -->
+                <div class="number number-12">12</div>
+                <div class="number number-1">1</div>
+                <div class="number number-2">2</div>
+                <div class="number number-3">3</div>
+                <div class="number number-4">4</div>
+                <div class="number number-5">5</div>
+                <div class="number number-6">6</div>
+                <div class="number number-7">7</div>
+                <div class="number number-8">8</div>
+                <div class="number number-9">9</div>
+                <div class="number number-10">10</div>
+                <div class="number number-11">11</div>
+                
+                <!-- Clock hands -->
+                <div class="hand hour-hand" id="hourHand"></div>
+                <div class="hand minute-hand" id="minuteHand"></div>
+                <div class="hand second-hand" id="secondHand"></div>
+                
+                <!-- Center dot -->
+                <div class="clock-center"></div>
+            </div>
+        </div>
+        
+        <div class="digital-display" id="digitalTime">00:00:00</div>
+        <div class="date-info" id="dateInfo"></div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            
+            // Calculate angles for hands
+            const secondAngle = (seconds * 6) - 90; // 6 degrees per second
+            const minuteAngle = (minutes * 6) + (seconds * 0.1) - 90; // 6 degrees per minute + smooth seconds
+            const hourAngle = ((hours % 12) * 30) + (minutes * 0.5) - 90; // 30 degrees per hour + smooth minutes
+            
+            // Apply rotations
+            document.getElementById('secondHand').style.transform = `rotate(${secondAngle}deg)`;
+            document.getElementById('minuteHand').style.transform = `rotate(${minuteAngle}deg)`;
+            document.getElementById('hourHand').style.transform = `rotate(${hourAngle}deg)`;
+            
+            // Update digital display
+            const timeString = String(hours).padStart(2, '0') + ':' + 
+                              String(minutes).padStart(2, '0') + ':' + 
+                              String(seconds).padStart(2, '0');
+            document.getElementById('digitalTime').textContent = timeString;
+            
+            // Update date
+            const options = { 
+                weekday: 'long',
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric'
+            };
+            const dateString = now.toLocaleDateString('he-IL', options);
+            document.getElementById('dateInfo').textContent = dateString;
+        }
+
+        // Update immediately and then every second
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
